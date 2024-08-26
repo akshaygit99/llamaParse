@@ -6,7 +6,7 @@ nest_asyncio.apply()
 
 
 from llama_parse import LlamaParse
-document=LlamaParse(result_type="markdown").load_data("./Invoice-9CB0F212-0001.pdf")
+document=LlamaParse(result_type="markdown").load_data("./data/MLFwk.pdf")
 
 from llama_index.core import VectorStoreIndex
 llama_parse_inex=VectorStoreIndex.from_documents(document)
