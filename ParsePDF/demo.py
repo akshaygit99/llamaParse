@@ -1,49 +1,40 @@
-import openai
 import os
-import nest_asyncio
-from llama_parse import LlamaParse
-from llama_index.core import VectorStoreIndex
+import nest_asyncio  # noqa: E402
+nest_asyncio.apply()
+
 from IPython.display import Markdown, display
+
+# bring in our LLAMA_CLOUD_API_KEY
+from dotenv import load_dotenv
+load_dotenv()
+
 # bring in deps
 from llama_parse import LlamaParse
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
 
-
-# Set API keys directly in the script
-os.environ["LLAMA_CLOUD_API_KEY"] = "llx-EnPWMfNOWREeRsaCECeWO7zGmVneB0owCJqU7xCk1NDnv4Ud"
-
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
-openai.api_key = OPENAI_API_KEY
-
-import os
-print("Current working directory:", os.getcwd())
+llamaparse_api_key = os.getenv("LLAMA_CLOUD_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 
-# Allow nested asyncio loops
-nest_asyncio.apply()
-
+# set up parser
 parser = LlamaParse(
-    api_key="llx-EnPWMfNOWREeRsaCECeWO7zGmVneB0owCJqU7xCk1NDnv4Ud",
+    api_key=llamaparse_api_key,
     result_type="markdown"  # "markdown" and "text" are available
 )
 
 # use SimpleDirectoryReader to parse our file
 file_extractor = {".pdf": parser}
-document = SimpleDirectoryReader(input_files=['test.pdf'], file_extractor=file_extractor).load_data()
+documents = SimpleDirectoryReader(input_files=['data/gpt4all.pdf'], file_extractor=file_extractor).load_data()
+#print(documents)
 
-# Create the index and query engine
-llama_parse_index = VectorStoreIndex.from_documents(document)
-llama_parse_query_engine = llama_parse_index.as_query_engine()
 
-# Execute queries
-print(
-    llama_parse_query_engine.query(
-        "What is the Bill To Address?"
-    )
-)
+# create an index from the parsed markdown
+index = VectorStoreIndex.from_documents(documents)
 
-print(
-    llama_parse_query_engine.query(
-        "What are the API usage credits?"
-    )
-)
+# create a query engine for the index
+query_engine = index.as_query_engine()
+
+# query the engine
+query = "Where was the collected loaded on?"
+response = query_engine.query(query)
+display(Markdown(f"<b>{response}</b>"))
