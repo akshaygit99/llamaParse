@@ -15,6 +15,10 @@ os.environ["LLAMA_CLOUD_API_KEY"] = "llx-EnPWMfNOWREeRsaCECeWO7zGmVneB0owCJqU7xC
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 openai.api_key = OPENAI_API_KEY
 
+import os
+print("Current working directory:", os.getcwd())
+
+
 # Allow nested asyncio loops
 nest_asyncio.apply()
 
