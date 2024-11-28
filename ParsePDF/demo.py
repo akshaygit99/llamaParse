@@ -27,7 +27,9 @@ print(os.getcwd())
 
 # use SimpleDirectoryReader to parse our file
 file_extractor = {".pdf": parser}
-documents = SimpleDirectoryReader(input_files=['demo/test.pdf'], file_extractor=file_extractor).load_data()
+script_dir = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(script_dir, "demo", "test.pdf")
+documents = SimpleDirectoryReader(input_files=file_path, file_extractor=file_extractor).load_data()
 #print(documents)
 
 
