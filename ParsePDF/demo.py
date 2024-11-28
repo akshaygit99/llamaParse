@@ -4,8 +4,10 @@ from llama_parse import LlamaParse
 from llama_index.core import VectorStoreIndex
 
 # Set API keys directly in the script
-os.environ["LLAMA_CLOUD_API_KEY"] = "<your_llama_cloud_api_key>"
-os.environ["OPENAI_API_KEY"] = "<your_openai_api_key>"
+os.environ["LLAMA_CLOUD_API_KEY"] = "llx-EnPWMfNOWREeRsaCECeWO7zGmVneB0owCJqU7xCk1NDnv4Ud"
+
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+openai.api_key = OPENAI_API_KEY
 
 # Allow nested asyncio loops
 nest_asyncio.apply()
