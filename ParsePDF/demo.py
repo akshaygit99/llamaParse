@@ -25,7 +25,7 @@ parser = LlamaParse(
 
 # use SimpleDirectoryReader to parse our file
 file_extractor = {".pdf": parser}
-documents = SimpleDirectoryReader(input_files=['data/test.pdf'], file_extractor=file_extractor).load_data()
+document = SimpleDirectoryReader(input_files=['data/test.pdf'], file_extractor=file_extractor).load_data()
 
 # Create the index and query engine
 llama_parse_index = VectorStoreIndex.from_documents(document)
