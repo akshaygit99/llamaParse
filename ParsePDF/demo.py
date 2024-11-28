@@ -1,3 +1,4 @@
+import openai
 import os
 import nest_asyncio
 from llama_parse import LlamaParse
