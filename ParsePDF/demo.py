@@ -24,7 +24,7 @@ parser = LlamaParse(
 
 # use SimpleDirectoryReader to parse our file
 file_extractor = {".pdf": parser}
-documents = SimpleDirectoryReader(input_files=['data/gpt4all.pdf'], file_extractor=file_extractor).load_data()
+documents = SimpleDirectoryReader(input_files=['demo/test.pdf'], file_extractor=file_extractor).load_data()
 #print(documents)
 
 
