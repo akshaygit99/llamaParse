@@ -14,7 +14,7 @@ openai.api_key = OPENAI_API_KEY
 nest_asyncio.apply()
 
 # Load and process the document
-document = LlamaParse(result_type="markdown").load_data("./data/MLFwk.pdf")
+document = LlamaParse(result_type="markdown").load_data("./data/test.pdf")
 
 # Create the index and query engine
 llama_parse_index = VectorStoreIndex.from_documents(document)
