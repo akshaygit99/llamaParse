@@ -19,7 +19,7 @@ openai.api_key = OPENAI_API_KEY
 nest_asyncio.apply()
 
 parser = LlamaParse(
-    api_key=llamaparse_api_key,
+    api_key="llx-EnPWMfNOWREeRsaCECeWO7zGmVneB0owCJqU7xCk1NDnv4Ud",
     result_type="markdown"  # "markdown" and "text" are available
 )
 
