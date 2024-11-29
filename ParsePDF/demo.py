@@ -34,7 +34,7 @@ print(os.getcwd())
 #print(documents)
 
 file_extractor = {".pdf": parser}
-documents = SimpleDirectoryReader(input_files=['test.pdf'], file_extractor=file_extractor).load_data()
+documents = SimpleDirectoryReader(input_files=['/test.pdf'], file_extractor=file_extractor).load_data()
 
 
 # create an index from the parsed markdown
